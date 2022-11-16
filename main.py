@@ -83,9 +83,9 @@ def Task4():
 def Task5():
     mas = [4, 7, -10, 15, -2]
     print(mas)
-    mas.sort()
-    max_minus = -100000000000000000000000000
-    max_plus = -10000000000000000000000000
+    merge_sort(mas)
+    max_minus = -100000
+    max_plus = -100000
     if len(mas) < 3:
         return "Ошибка"
     elif len(mas) == 3:
@@ -100,6 +100,34 @@ def Task5():
                 return max_plus
         max_plus = mas[len(mas) - 3] * mas[len(mas) - 2] * mas[len(mas) - 1]
         return max_plus
+
+def merge_sort(array):
+    if len(array) > 1:
+        mid = len(array) // 2
+        left = array[:mid]
+        right = array[mid:]
+        merge_sort(left)
+        merge_sort(right)
+        i = 0
+        j = 0
+        k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                array[k] = left[i]
+                i += 1
+            else:
+                array[k] = right[j]
+                j += 1
+            k += 1
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            array[k] = right[j]
+            j += 1
+            k += 1
+    return array
 
 # _______________________________________________________________________________________________________________________________________________________
 def Task6():
@@ -126,9 +154,9 @@ def Task6():
 
 
 # _______________________________________________________________________________________________________________________________________________________
-# print("Задание 1:")
-# print("Введите строку:")
-# Task1()
+# # print("Задание 1:")
+# # print("Введите строку:")
+# # Task1()
 
 print("Задание 2:")
 Task2()
