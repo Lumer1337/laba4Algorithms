@@ -1,3 +1,4 @@
+
 def Task1():  #-
     str = input()
     mas = []
@@ -76,53 +77,30 @@ def Task4():
             mas[abs(mas[i])] = mas[abs(mas[i])] * -1
         else:
             print(abs(mas[i]))
-# -______________________________________________________________________________________________________________________________________________________
-def Task5():
-    mas = [2, 1, -10, -15, 5, 4, -3]
-    print(mas)
-    merge_sort(mas)
-    max_minus = -1000
-    max_plus = -1000
-    if len(mas) == 3:
-        return mas[0] * mas[1] * mas[2]
-    else:
-        if (mas[0] < 0 and mas[1] < 0):
-            max_minus = mas[0] * mas[1] * mas[len(mas) - 1]
-            max_plus = mas[len(mas) - 3] * mas[len(mas) - 2] * mas[len(mas) - 1]
-            if max_minus > max_plus:
-                return max_minus
-            else:
-                return max_plus
-        max_plus = mas[len(mas) - 3] * mas[len(mas) - 2] * mas[len(mas) - 1]
-        return print("Максимальное произведение 3 чисел =", max_plus)
+# +______________________________________________________________________________________________________________________________________________________
 
-def merge_sort(array):
-    if len(array) > 1:
-        mid = len(array) // 2
-        left = array[:mid]
-        right = array[mid:]
-        merge_sort(left)
-        merge_sort(right)
-        i = 0
-        j = 0
-        k = 0
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                array[k] = left[i]
-                i += 1
-            else:
-                array[k] = right[j]
-                j += 1
-            k += 1
-        while i < len(left):
-            array[k] = left[i]
-            i += 1
-            k += 1
-        while j < len(right):
-            array[k] = right[j]
-            j += 1
-            k += 1
-    return array
+def Task5():
+    a = [5, -3, 10, -7, 2, 1]
+    for i in range(0, len(a)):
+        if a[i] < 0:
+            a[i] = abs(a[i])
+    return print("Наибольшее произведение из 3 чисел:", Large3(a, len(a)))
+
+def Large3(arr, arr_size):
+
+    first = second = third = -10000000000
+
+    for i in range(0, arr_size):
+        if (arr[i] > first):
+            third = second
+            second = first
+            first = arr[i]
+        elif (arr[i] > second):
+            third = second
+            second = arr[i]
+        elif (arr[i] > third):
+            third = arr[i]
+    return first*second*third
 # +______________________________________________________________________________________________________________________________________________________
 def Task6():
     matrix = [[2, 1, 1],
